@@ -17,7 +17,6 @@ pygame.display.set_caption("Estrela de 5 Pontas")
 def draw_star(screen, position, size, angle_degrees=0):
     x, y = position
     half_size = size // 2
-    angle = math.radians(72)
 
     outer_points = []
     inner_points = []
