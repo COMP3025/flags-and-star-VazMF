@@ -11,10 +11,9 @@ DARK_ORANGE = (255, 140, 0)
 screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Estrela de 5 Pontas")
 
 
-def draw_star(screen, position, size, angle_degrees=0):
+def draw_star(screen, position, size, angle_degrees=0, color=WHITE):
     x, y = position
     half_size = size // 2
 
@@ -37,20 +36,10 @@ def draw_star(screen, position, size, angle_degrees=0):
         points.append(outer_points[i])
         points.append(inner_points[i])
 
-    pygame.draw.polygon(screen, DARK_ORANGE, points, 8)
-    pygame.draw.polygon(screen, YELLOW, points, 0)
+    pygame.draw.polygon(screen, color, points, 0)
 
 
-running = True
-angle = 160
+def draw_crescent_moon(screen, position, size, color):
+    pygame.draw.circle(screen, WHITE, (position[0] - size // 4, position[1]), size // 2)
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    screen.fill(BLACK)
-    draw_star(screen=screen, position=(400, 300), size=400, angle_degrees=angle)
-    pygame.display.flip()
-
-pygame.quit()
+    pygame.draw.circle(screen, color, position, size // 2)
